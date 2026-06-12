@@ -82,21 +82,44 @@ COUNT(DISTINCT CASE WHEN mr.vehicle_type = 'Bus' THEN (mr.route_short_name, mr.r
 
 The output of the final processing matrix generated a clean, 577-row summary table aggregating **Population Coverage (%)**, **Total Area Coverage (%)**, and **Weekday Route Availability** across every suburb in Greater Melbourne.
 
-### 1. Population Coverage Heatmap
+---
 
-*Measures the percentage of residents living within a walkable 400-meter public transport buffer.*
+## 📊 Deep-Dive Geospatial Analysis & Policy Insights
 
-* **Inner Core Efficiency (80–100%):** Melbourne’s established middle and inner core (e.g., Brunswick, Richmond, Box Hill, Footscray) exhibits high public transport access density, benefiting from a robust overlapping grid of historical tram, train, and bus lines.
-* **Linear Coastal Density:** Isolated outer pockets like the tip of the Mornington Peninsula (Portsea/Sorrento) display high population coverage because suburban zoning tightly hugs a single main highway axis that is fully serviced by regional transit routes.
+The final analytical output synthesized multi-million row GTFS spatial points with ABS meshblock demographic vectors to expose a stark structural contrast in Melbourne's urban framework.
 
-### 2. Area Coverage Heatmap
+### 1. Population Coverage Analysis
+*This layer isolates the demographic dimension, calculating the percentage of the actual resident population living within a walkable 400-meter ($0.4\text{ km}$) transit catchment radius.*
 
-*Measures the raw geographic boundary area covered by the 400-meter transport buffers.*
+  [High Density Urban Grid] ────────> 80% – 100% Core Population Coverage (Established Inner Core)
+  [Linear Ribbon Corridors] ────────> High Pop Coverage / Restricted Spatial Footprint (Peninsula Axis)
+  [Sparsely Settled Peri-Urban] ────> 0% – 20% Population Blindspots (Rural/Growth Fringes)
 
-* **The Urban Dilemma (High Pop Coverage vs. Low Area Coverage):** Comparing these two heatmaps reveals a key urban planning insight. While outer fringe growth corridors often show decent population coverage (as residents live clustered closely around established town hubs), their **Area Coverage registers below 20% (White)**. This visually demonstrates the spatial signature of Melbourne’s strictly protected, unserved **"Green Wedge" zones**, farms, and parklands.
+* **The Urban Core & Middle Ring Efficiency (80% – 100%):** A continuous, high-accessibility spatial block extends from inner northern hubs (Brunswick, Coburg) through the eastern commercial centers (Richmond, Hawthorn, Box Hill), cascading down the southeastern sandbelt (Brighton, Dandenong) to western industrial-residential nodes (Footscray, Sunshine). This reflects the legacy of a dense, overlapping multimodal grid where radial rail lines intersect with grid-based tram and bus networks.
+* **Linear Coastal Density & Ribbon Development:** The eastern coast of Port Phillip Bay (Frankston down to Mount Martha) and the isolated tips of the Mornington Peninsula (Portsea, Sorrento) exhibit high population coverage despite their distance from the CBD. This is a classic signature of **ribbon development**: residential zoning is strictly confined along a primary highway corridor (Nepean Highway) and rail axis, meaning the localized population clusters tightly around the transit assets.
+* **Systemic Fringe Blind Spots (0% – 20%):** Critical transit deficits are localized in three structural zones:
+  * **The Far North Rural Interface:** Non-nucleated rural layouts across the Macedon Ranges, Mitchell Shire (north of Wallan), and the forested topography of Kinglake/Whittlesea.
+  * **Topographic Barriers (East):** Scattered lifestyle properties in the rugged terrain of the Yarra Valley (Warburton) and Dandenong Ranges, where high slope gradients introduce severe geospatial friction for traditional transit routing.
+  * **Infrastructure Lag in Western Growth Corridors:** Newly subdivided residential zones around Melton and Wyndham Vale where rapid property development has outpaced state infrastructure scaling, leaving major residential pockets unserved.
 
 ---
 
+### 2. Area Coverage Analysis
+*This layer isolates the geographic dimension, computing the exact surface area percentage of a suburb's total boundary covered by the 400-meter buffers ($ST\_Area$).*
+
+* **Hyper-Nucleated Urban Grids (80% – 100%):** High area coverage is strictly locked into the central business district (CBD) grid and immediate inner-ring suburbs (Carlton, Fitzroy, Collingwood, South Melbourne). Here, transit stop frequencies are so dense that catchment zones overlap almost completely, leaving zero spatial gaps within the legal suburb boundaries.
+* **Corridor Branching & Transit-Oriented Development (20% – 60%):** Symmetrical, branching bands of medium area coverage clearly trace Melbourne’s historical radial transit corridors. This spatial footprint expands cleanly along the South Eastern highway/rail axis toward Clayton/Springvale and the Eastern Freeway path toward Manningham and Whitehorse, highlighting traditional transit-oriented development patterns.
+* **The "Green Wedge" Boundary Drop (0% – 20%):** Almost the entire outer periphery of Greater Melbourne drops into a spatial vacuum on this map. Even within major outer town centers like Sunbury, Healesville, or Flinders, the overall suburb area coverage fails to breach 20% due to the inclusion of massive, unserved agricultural zones, state forests, and protected parklands within their administrative boundaries.
+
+---
+
+### 💡 Strategic Urban Planning Takeaways (High Pop vs. Low Area)
+
+By configuring this multi-dimensional spatial join, the database pipeline highlights a critical urban planning phenomenon unique to the Greater Melbourne Metropolitan area:
+
+> **The Nucleated Center Paradox:** Outer ring and peri-urban suburbs frequently display excellent **Population Coverage (80%–100%)** alongside abysmal **Area Coverage (0%–20%)**. 
+> 
+> This indicates that while local councils are highly effective at clustering residential populations inside compact, walkable town centers or along single transit-serviced roads, the vast majority of the landmass consists of protected **"Green Wedge" zones** and farms. For data engineers and planners, this proves that evaluating transit access by raw suburb area alone introduces extreme bias; demographic weight must be spatially intersected to uncover the true operational efficiency of a public transit network.
 ## 🛠️ Tools, Core Functions & Technologies
 
 * **Database Engine:** PostgreSQL (w/ PostGIS Spatial Extensions) Hosted via Docker
