@@ -4,7 +4,7 @@
 ## 🔍 Overview
 This repository contains a full-stack spatial data engineering and analytics solution developed to evaluate public transport coverage against demographic distributions across the Greater Melbourne Metropolitan area. 
 
-Acting as a Data Analyst for **Public Transport Victoria (PTV)**, this project integrates multi-million row General Transit Feed Specification (GTFS) data from the Mobility Database with geospatial boundary files and national census records from the Australian Bureau of Statistics (ABS). The ultimate goal was to identify critical transport blind spots and assess suburb-level infrastructure scaling[cite: 437].
+Acting as a Data Analyst for **Public Transport Victoria (PTV)**, this project integrates multi-million row General Transit Feed Specification (GTFS) data from the Mobility Database with geospatial boundary files and national census records from the Australian Bureau of Statistics (ABS). The ultimate goal was to identify critical transport blind spots and assess suburb-level infrastructure scaling.
 
 ---
 
