@@ -114,7 +114,7 @@ The output of the final processing matrix generated a clean, 577-row summary tab
 
 ## 🔗 Links
 
-* **Portfolio Case Study:** [PTV Access Analysis](https://github.com/manavnursmooloo23-maker/portfolio-proj/blob/main/projects/ptv-analysis.md)
+[PTV Case Study](https://github.com/manavnursmooloo23-maker/portfolio-proj/blob/main/projects/ptv-analysis.md)
 
 ```
 
