@@ -1,5 +1,4 @@
-<img width="1490" height="598" alt="image" src="https://github.com/user-attachments/assets/cbfeaff2-9fdd-47d2-8d97-c25d7f27135b" /># Public Transport Accessibility Analysis (Greater Melbourne)
-🚀 **Enterprise Spatial Data Engineering & Analytics Case Study**
+# Public Transport Accessibility Analysis (Greater Melbourne)
 
 ## 🔍 Overview
 This repository contains a full-stack spatial data engineering and analytics solution developed to evaluate public transport coverage against demographic distributions across the Greater Melbourne Metropolitan area. 
