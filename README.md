@@ -12,10 +12,15 @@ Acting as a Data Analyst for **Public Transport Victoria (PTV)**, this project i
 
 The pipeline was built inside an isolated, containerized environment using **Docker**, passing spatial and relational tables into a local **PostgreSQL / PostGIS** instance. 
 
-**\`\`\`text**
+**\`\`\`**text
+[GTFS Transit Data] ---> (DBeaver CSV Engine) --┐
+[Census Data (XLSX)] --> (Data Conversion) -----┼--> [PostgreSQL / PostGIS] ---> [Staging Tables &] ---> [QGIS Analytical]
+[ABS Meshblocks] ------> (ogr2ogr CLI Engine) --┘     (Containerized Docker)      (Spatial Indexes)        (High-Res Heatmaps)
   [GTFS Transit Data] ---> (DBeaver CSV Engine) --┐
   [Census Data (XLSX)] --> (Data Conversion) -----┼--> [PostgreSQL / PostGIS] ---> [Staging Tables &] ---> [QGIS Analytical]
-  [ABS Meshblocks] ------> (ogr2ogr CLI Engine) --┘     (Containerized Docker)      (Spatial Indexes)        (High-Res Heatmaps) **\`\`\`**
+  [ABS Meshblocks] ------> (ogr2ogr CLI Engine) --┘     (Containerized Docker)      (Spatial Indexes)        (High-Res Heatmaps) 
+
+  ---
 
 ### 1. Data Restoration & Ingestion Mechanics
 
