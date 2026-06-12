@@ -2,17 +2,16 @@
 🚀 **Enterprise Spatial Data Engineering & Analytics Case Study**
 
 ## 🔍 Overview
-[cite_start]This repository contains a full-stack spatial data engineering and analytics solution developed to evaluate public transport coverage against demographic distributions across the Greater Melbourne Metropolitan area[cite: 380, 437]. 
+This repository contains a full-stack spatial data engineering and analytics solution developed to evaluate public transport coverage against demographic distributions across the Greater Melbourne Metropolitan area. 
 
-[cite_start]Acting as a Data Analyst for **Public Transport Victoria (PTV)**, this project integrates multi-million row General Transit Feed Specification (GTFS) data from the Mobility Database with geospatial boundary files and national census records from the Australian Bureau of Statistics (ABS)[cite: 102, 123, 192]. [cite_start]The ultimate goal was to identify critical transport blind spots and assess suburb-level infrastructure scaling[cite: 437].
+Acting as a Data Analyst for **Public Transport Victoria (PTV)**, this project integrates multi-million row General Transit Feed Specification (GTFS) data from the Mobility Database with geospatial boundary files and national census records from the Australian Bureau of Statistics (ABS)[cite: 102, 123, 192]. [cite_start]The ultimate goal was to identify critical transport blind spots and assess suburb-level infrastructure scaling[cite: 437].
 
 ---
 
 ## 🏗️ System Architecture & Data Pipeline
 
-[cite_start]The pipeline was built inside an isolated, containerized environment using **Docker**, passing spatial and relational tables into a local **PostgreSQL / PostGIS** instance. 
+The pipeline was built inside an isolated, containerized environment using **Docker**, passing spatial and relational tables into a local **PostgreSQL / PostGIS** instance. 
 
-```text
   [GTFS Transit Data] ---> (DBeaver CSV Engine) --┐
   [Census Data (XLSX)] --> (Data Conversion) -----┼--> [PostgreSQL / PostGIS] ---> [Staging Tables &] ---> [QGIS Analytical]
   [ABS Meshblocks] ------> (ogr2ogr CLI Engine) --┘     (Containerized Docker)      (Spatial Indexes)        (High-Res Heatmaps)
