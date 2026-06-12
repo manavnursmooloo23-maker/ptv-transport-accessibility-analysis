@@ -1,1 +1,13 @@
+# Ignore raw local spatial and demographic source files
+*.zip
+*.shp
+*.shx
+*.dbf
+*.prj
+*.xlsx
+*.csv
 
+# Ignore local database storage and cache
+pgdata/
+.DS_Store
+.env
