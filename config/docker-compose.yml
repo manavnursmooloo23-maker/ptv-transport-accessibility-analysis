@@ -1,1 +1,22 @@
-
+services:
+ db:
+    build: db   #This creates a PostgreSQL + PostGIS container from a custom build folder called db.
+    environment:
+      #your configuration
+      - POSTGRES_DB=ptv-db  #creates the database ptv-db
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=postgres
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      # Add postgis extension
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis #enables PostGIS (spatial support)
+    ports:
+      - "5435:5432" #5432 = container PostgreSQL port, 5435 = your local machine port
+    restart: on-failure
+    volumes:
+      #This is where Postgresql stores the data
+      #Replace the ./pgdata with local folder in your PC. 
+      #You could leave this as is if you extract the CSE3DMS folder in your La Trobe Onedrive folder
+      - "./pgdata:/var/lib/postgresql/data"  
+      #Replace the ../vector with your own directory that contains vector file and external data
+      - "../vector:/home/vector"
+      - "./extdata:/home/extdata"
