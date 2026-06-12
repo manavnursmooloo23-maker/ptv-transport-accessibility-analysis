@@ -1,4 +1,4 @@
-# Public Transport Accessibility Analysis (Greater Melbourne)
+<img width="1490" height="598" alt="image" src="https://github.com/user-attachments/assets/cbfeaff2-9fdd-47d2-8d97-c25d7f27135b" /># Public Transport Accessibility Analysis (Greater Melbourne)
 🚀 **Enterprise Spatial Data Engineering & Analytics Case Study**
 
 ## 🔍 Overview
@@ -17,6 +17,7 @@ The pipeline was built inside an isolated, containerized environment using **Doc
 [Census Data (XLSX)] --> (Data Conversion) -----┼--> [PostgreSQL / PostGIS] ---> [Staging Tables &] ---> [QGIS Analytical]
 [ABS Meshblocks] ------> (ogr2ogr CLI Engine) --┘     (Containerized Docker)      (Spatial Indexes)        (High-Res Heatmaps)
 
+```
   ---
 
 ### 1. Data Restoration & Ingestion Mechanics
